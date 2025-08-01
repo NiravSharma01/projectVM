@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>French Class Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url("bg.webp") no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 20px;
+      color: white;
+    }
+
+    .container {
+      max-width: 720px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      color: #000;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.6rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .radio-group,
+    .checkbox-group {
+      margin-top: 10px;
+    }
+
+    .radio-group label,
+    .checkbox-group label {
+      display: block;
+      font-weight: normal;
+      margin-top: 6px;
+      font-size: 0.95rem;
+    }
+
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      margin: 30px 0 0;
+      padding: 14px;
+      font-size: 1.1rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .container {
+        padding: 20px;
+      }
+      label {
+        font-size: 0.95rem;
+      }
+      input,
+      textarea,
+      button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>French Class Registration Form</h1>
+    <form action="https://formsubmit.co/vanshikamis007@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+      <input type="text" name="_honey" style="display:none">
+
+      <label>1. Full Name *</label>
+      <input type="text" name="Full Name" required>
+
+      <label>2. Date of Birth *</label>
+      <input type="date" name="Date of Birth" required>
+
+      <label>3. Gender *</label>
+      <div class="radio-group">
+        <label><input type="radio" name="Gender" value="Male" required> Male</label>
+        <label><input type="radio" name="Gender" value="Female" required> Female</label>
+        <label><input type="radio" name="Gender" value="Other" required> Other</label>
+      </div>
+
+      <label>4. Phone Number (with country code) *</label>
+      <input type="tel" name="Phone Number" required pattern="^\+?[0-9\s\-()]{7,}$">
+
+      <label>5. Email Address *</label>
+      <input type="email" name="Email" required>
+
+      <label>6. City & Country</label>
+      <input type="text" name="City and Country">
+
+      <label>7. Preferred Class Mode</label>
+      <div class="radio-group">
+        <label><input type="radio" name="Class Mode" value="Online"> Online (Zoom/Google Meet)</label>
+        <label><input type="radio" name="Class Mode" value="Offline"> Offline (In-person)</label>
+        <label><input type="radio" name="Class Mode" value="Not decided"> Not decided yet</label>
+      </div>
+
+      <label>8. Current Occupation / Study Status</label>
+      <input type="text" name="Occupation/Study Status">
+
+      <label>9. Highest Qualification</label>
+      <div class="radio-group">
+        <label><input type="radio" name="Qualification" value="High School"> High School</label>
+        <label><input type="radio" name="Qualification" value="Bachelor's Degree"> Bachelor's Degree</label>
+        <label><input type="radio" name="Qualification" value="Master's Degree"> Master's Degree</label>
+        <label><input type="radio" name="Qualification" value="Other"> Other</label>
+      </div>
+
+      <label>10. Have you studied French before?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="Studied French Before" value="Yes"> Yes</label>
+        <label><input type="radio" name="Studied French Before" value="No"> No</label>
+      </div>
+
+      <label>11. If yes, what level?</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="French Level" value="A1"> A1</label>
+        <label><input type="checkbox" name="French Level" value="A2"> A2</label>
+        <label><input type="checkbox" name="French Level" value="B1"> B1</label>
+        <label><input type="checkbox" name="French Level" value="B2"> B2</label>
+        <label><input type="checkbox" name="French Level" value="Not Sure"> Not Sure</label>
+        <label><input type="checkbox" name="French Level" value="Other"> Other</label>
+      </div>
+
+      <label>12. Why do you want to learn French?</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="Reason" value="Education"> Education</label>
+        <label><input type="checkbox" name="Reason" value="Job Opportunities"> Job Opportunities</label>
+        <label><input type="checkbox" name="Reason" value="Immigration"> Immigration</label>
+        <label><input type="checkbox" name="Reason" value="Travel"> Travel</label>
+        <label><input type="checkbox" name="Reason" value="Hobby"> Hobby</label>
+        <label><input type="checkbox" name="Reason" value="Other"> Other</label>
+      </div>
+
+      <label>13. Preferred Class Days</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="Preferred Days" value="Monday"> Monday</label>
+        <label><input type="checkbox" name="Preferred Days" value="Tuesday"> Tuesday</label>
+        <label><input type="checkbox" name="Preferred Days" value="Wednesday"> Wednesday</label>
+        <label><input type="checkbox" name="Preferred Days" value="Thursday"> Thursday</label>
+        <label><input type="checkbox" name="Preferred Days" value="Friday"> Friday</label>
+        <label><input type="checkbox" name="Preferred Days" value="Saturday"> Saturday</label>
+        <label><input type="checkbox" name="Preferred Days" value="Sunday"> Sunday</label>
+      </div>
+
+      <label>14. Preferred Time Slot</label>
+      <div class="radio-group">
+        <label><input type="radio" name="Time Slot" value="Morning"> Morning</label>
+        <label><input type="radio" name="Time Slot" value="Afternoon"> Afternoon</label>
+        <label><input type="radio" name="Time Slot" value="Evening"> Evening</label>
+        <label><input type="radio" name="Time Slot" value="Flexible"> Flexible</label>
+      </div>
+
+      <label>15. Preferred Teaching Language</label>
+      <div class="radio-group">
+        <label><input type="radio" name="Teaching Language" value="English"> English</label>
+        <label><input type="radio" name="Teaching Language" value="Hindi"> Hindi</label>
+        <label><input type="radio" name="Teaching Language" value="Both"> Both</label>
+      </div>
+
+      <label>16. Prior French Certifications (if any)</label>
+      <input type="text" name="French Certifications">
+
+      <label>17. Special Learning Needs or Expectations</label>
+      <textarea name="Expectations" rows="4"></textarea>
+
+      <label>18. How did you hear about this class?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="Referral" value="Instagram"> Instagram</label>
+        <label><input type="radio" name="Referral" value="WhatsApp"> WhatsApp</label>
+        <label><input type="radio" name="Referral" value="Friend"> Friend</label>
+        <label><input type="radio" name="Referral" value="Google"> Google</label>
+        <label><input type="radio" name="Referral" value="Other"> Other</label>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
