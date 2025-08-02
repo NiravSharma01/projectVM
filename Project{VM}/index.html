@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>French Class Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url("bg.webp") no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 720px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      color: #000;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 30px;
+      padding: 14px;
+      font-size: 1.1rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>French Class Registration Form</h1>
+    <form action="https://formsubmit.co/vanshikamis007@gmail.com" method="POST">
+      <!-- Hidden setup for FormSubmit -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="thank-you.html">
+      <input type="text" name="_honey" style="display:none">
+
+      <!-- Form fields -->
+      <label for="fullname">Full Name *</label>
+      <input type="text" name="Full Name" id="fullname" required>
+
+      <label for="dob">Date of Birth *</label>
+      <input type="date" name="Date of Birth" id="dob" required>
+
+      <label for="email">Email *</label>
+      <input type="email" name="Email" id="email" required>
+
+      <label for="phone">Phone Number *</label>
+      <input type="tel" name="Phone" id="phone" required>
+
+      <label for="gender">Gender *</label>
+      <select name="Gender" id="gender" required>
+        <option value="">-- Select --</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="state">State *</label>
+      <input type="text" name="State" id="state" required>
+
+      <label for="district">District *</label>
+      <input type="text" name="District" id="district" required>
+
+      <label for="qualification">Educational Qualification *</label>
+      <input type="text" name="Qualification" id="qualification" required>
+
+      <label for="college">College/School Name *</label>
+      <input type="text" name="College" id="college" required>
+
+      <label for="why">Why do you want to join this course? *</label>
+      <textarea name="Reason" id="why" rows="4" required></textarea>
+
+      <label for="heard">How did you hear about us?</label>
+      <select name="Reference Source" id="heard">
+        <option value="">-- Select --</option>
+        <option value="WhatsApp">WhatsApp</option>
+        <option value="Facebook">Facebook</option>
+        <option value="Instagram">Instagram</option>
+        <option value="Friend/Family">Friend/Family</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
