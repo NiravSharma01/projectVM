@@ -5,17 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>French Class Registration</title>
   <style>
+    :root {
+      --bg-color: #ffffff91;
+      --text-color: #000;
+      --input-bg: #fff;
+      --input-border: #ccc;
+      --button-bg: #0077cc;
+      --button-hover: #005fa3;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f5f5f5;
+      --input-bg: #2b2b2b;
+      --input-border: #444;
+      --button-bg: #005fa3;
+      --button-hover: #003d6e;
+    }
+
     body {
+      background-image: url('bg.webp');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      color: var(--text-color);
       font-family: Arial, sans-serif;
-      background: #f0f2f5;
-      margin: 0;
-      padding: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .container {
       max-width: 800px;
       margin: auto;
-      background: #fff;
+      background: var(--bg-color);
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -23,7 +44,7 @@
 
     h1 {
       text-align: center;
-      color: #0077cc;
+      color: var(--button-bg);
     }
 
     label {
@@ -37,8 +58,10 @@
       padding: 10px;
       margin-top: 5px;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--input-border);
       font-size: 1rem;
+      background-color: var(--input-bg);
+      color: var(--text-color);
     }
 
     .checkbox-group, .radio-group {
@@ -55,7 +78,7 @@
       margin-top: 25px;
       width: 100%;
       padding: 14px;
-      background-color: #0077cc;
+      background-color: var(--button-bg);
       color: white;
       font-size: 1.1rem;
       border: none;
@@ -64,13 +87,38 @@
     }
 
     button:hover {
-      background-color: #005fa3;
+      background-color: var(--button-hover);
+    }
+
+    .toggle-container {
+      text-align: right;
+      margin: 15px 20px 0 0;
+    }
+
+    .toggle-container button {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      background: transparent;
+      border: 1px solid var(--button-bg);
+      color: var(--button-bg);
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .toggle-container button:hover {
+      background: var(--button-bg);
+      color: white;
     }
   </style>
 </head>
 <body>
+  <div class="toggle-container">
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
+
   <div class="container">
     <h1>French Class Registration</h1>
+    <p><b><u>By- Vanshika Mishra</u></b></p>
     <form id="whatsappForm">
 
       <label>1. Full Name *</label>
@@ -120,7 +168,7 @@
       </div>
 
       <label>11. If yes, what level?</label>
-      <div class="checkbox-group">
+      <div class="checkbox-group" id="levelGroup">
         <label><input type="checkbox" value="A1"> A1</label>
         <label><input type="checkbox" value="A2"> A2</label>
         <label><input type="checkbox" value="B1"> B1</label>
@@ -130,7 +178,7 @@
       </div>
 
       <label>12. Why do you want to learn French?</label>
-      <div class="checkbox-group">
+      <div class="checkbox-group" id="reasonGroup">
         <label><input type="checkbox" value="Education"> Education</label>
         <label><input type="checkbox" value="Job Opportunities"> Job Opportunities</label>
         <label><input type="checkbox" value="Immigration"> Immigration (Canada/France)</label>
@@ -140,7 +188,7 @@
       </div>
 
       <label>13. Preferred Class Days</label>
-      <div class="checkbox-group">
+      <div class="checkbox-group" id="dayGroup">
         <label><input type="checkbox" value="Monday"> Monday</label>
         <label><input type="checkbox" value="Tuesday"> Tuesday</label>
         <label><input type="checkbox" value="Wednesday"> Wednesday</label>
@@ -185,6 +233,7 @@
   </div>
 
   <script>
+    // WhatsApp Submission
     document.getElementById('whatsappForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -205,9 +254,9 @@
       const language = document.querySelector('input[name="language"]:checked')?.value || "";
       const ref = document.querySelector('input[name="ref"]:checked')?.value || "";
 
-      const level = Array.from(document.querySelectorAll('.checkbox-group:nth-of-type(2) input:checked')).map(el => el.value).join(", ");
-      const reasons = Array.from(document.querySelectorAll('.checkbox-group:nth-of-type(3) input:checked')).map(el => el.value).join(", ");
-      const days = Array.from(document.querySelectorAll('.checkbox-group:nth-of-type(4) input:checked')).map(el => el.value).join(", ");
+      const level = Array.from(document.querySelectorAll('#levelGroup input:checked')).map(el => el.value).join(", ");
+      const reasons = Array.from(document.querySelectorAll('#reasonGroup input:checked')).map(el => el.value).join(", ");
+      const days = Array.from(document.querySelectorAll('#dayGroup input:checked')).map(el => el.value).join(", ");
 
       const message = 
 `French Class Registration:
@@ -230,11 +279,23 @@ Certifications: ${certification}
 Expectations: ${expectations}
 Heard via: ${ref}`;
 
-      const whatsappNumber = "91 8146540929"; // Replace with your number
+      const whatsappNumber = "919465544904"; // No + or spaces
       const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
+    });
+
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark') ? 'enabled' : 'disabled');
+    }
+
+    // Load preference
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark');
+      }
     });
   </script>
 </body>
 </html>
-
