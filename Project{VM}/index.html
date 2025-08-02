@@ -24,7 +24,10 @@
     }
 
     body {
-      background-image: url('bg.webp');
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-image: url('bg.jpg');
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: cover;
@@ -35,16 +38,17 @@
 
     .container {
       max-width: 800px;
-      margin: auto;
+      margin: 40px auto;
       background: var(--bg-color);
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 18px rgba(0,0,0,0.13);
     }
 
     h1 {
       text-align: center;
       color: var(--button-bg);
+      margin-bottom: 5px;
     }
 
     label {
@@ -62,31 +66,38 @@
       font-size: 1rem;
       background-color: var(--input-bg);
       color: var(--text-color);
+      box-sizing: border-box;
     }
 
     .checkbox-group, .radio-group {
       margin-top: 5px;
+      margin-bottom: 10px;
     }
 
     .checkbox-group label,
     .radio-group label {
       display: block;
       font-weight: normal;
+      margin: 3px 0;
+      cursor: pointer;
     }
 
-    button {
-      margin-top: 25px;
+    button[type="submit"] {
+      margin-top: 30px;
       width: 100%;
-      padding: 14px;
+      padding: 16px;
       background-color: var(--button-bg);
       color: white;
       font-size: 1.1rem;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      letter-spacing: 1px;
+      font-weight: bold;
+      transition: background 0.18s;
     }
 
-    button:hover {
+    button[type="submit"]:hover {
       background-color: var(--button-hover);
     }
 
@@ -103,11 +114,21 @@
       color: var(--button-bg);
       border-radius: 5px;
       cursor: pointer;
+      transition: background 0.16s, color 0.16s;
     }
 
     .toggle-container button:hover {
       background: var(--button-bg);
       color: white;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 10px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -120,7 +141,6 @@
     <h1>French Class Registration</h1>
     <p><b><u>By- Vanshika Mishra</u></b></p>
     <form id="whatsappForm">
-
       <label>1. Full Name *</label>
       <input type="text" id="name" required>
 
@@ -140,7 +160,7 @@
       <label>5. Email Address *</label>
       <input type="email" id="email" required>
 
-      <label>6. City & Country</label>
+      <label>6. City &amp; Country</label>
       <input type="text" id="cityCountry">
 
       <label>7. Preferred Class Mode</label>
