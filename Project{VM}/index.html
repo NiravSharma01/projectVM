@@ -7,50 +7,57 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: url("bg.webp") no-repeat center center fixed;
-      background-size: cover;
+      background: #f0f2f5;
       margin: 0;
       padding: 20px;
     }
 
     .container {
-      max-width: 720px;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 30px;
+      max-width: 800px;
       margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      background: #fff;
+      padding: 30px;
       border-radius: 10px;
-      color: #000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 30px;
+      color: #0077cc;
     }
 
     label {
       display: block;
-      margin-top: 20px;
+      margin-top: 15px;
       font-weight: bold;
     }
 
     input, select, textarea {
       width: 100%;
-      padding: 12px;
-      margin-top: 6px;
-      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 5px;
       border-radius: 5px;
+      border: 1px solid #ccc;
       font-size: 1rem;
     }
 
-    button {
+    .checkbox-group, .radio-group {
+      margin-top: 5px;
+    }
+
+    .checkbox-group label,
+    .radio-group label {
       display: block;
+      font-weight: normal;
+    }
+
+    button {
+      margin-top: 25px;
       width: 100%;
-      margin-top: 30px;
       padding: 14px;
-      font-size: 1.1rem;
       background-color: #0077cc;
       color: white;
+      font-size: 1.1rem;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -63,62 +70,171 @@
 </head>
 <body>
   <div class="container">
-    <h1>French Class Registration Form</h1>
-    <form name="french-class-registration" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <!-- Netlify honeypot field -->
-      <input type="hidden" name="form-name" value="french-class-registration">
-      <p style="display:none">
-        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-      </p>
+    <h1>French Class Registration</h1>
+    <form id="whatsappForm">
 
-      <!-- Form fields -->
-      <label for="fullname">Full Name *</label>
-      <input type="text" name="Full Name" id="fullname" required>
+      <label>1. Full Name *</label>
+      <input type="text" id="name" required>
 
-      <label for="dob">Date of Birth *</label>
-      <input type="date" name="Date of Birth" id="dob" required>
+      <label>2. Date of Birth *</label>
+      <input type="date" id="dob" required>
 
-      <label for="email">Email *</label>
-      <input type="email" name="Email" id="email" required>
+      <label>3. Gender *</label>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+      </div>
 
-      <label for="phone">Phone Number *</label>
-      <input type="tel" name="Phone" id="phone" required>
+      <label>4. Phone Number (with country code) *</label>
+      <input type="tel" id="phone" required>
 
-      <label for="gender">Gender *</label>
-      <select name="Gender" id="gender" required>
-        <option value="">-- Select --</option>
-        <option value="Female">Female</option>
-        <option value="Male">Male</option>
-        <option value="Other">Other</option>
-      </select>
+      <label>5. Email Address *</label>
+      <input type="email" id="email" required>
 
-      <label for="state">State *</label>
-      <input type="text" name="State" id="state" required>
+      <label>6. City & Country</label>
+      <input type="text" id="cityCountry">
 
-      <label for="district">District *</label>
-      <input type="text" name="District" id="district" required>
+      <label>7. Preferred Class Mode</label>
+      <div class="radio-group">
+        <label><input type="radio" name="mode" value="Online"> Online</label>
+        <label><input type="radio" name="mode" value="Offline"> Offline</label>
+        <label><input type="radio" name="mode" value="Not decided"> Not decided yet</label>
+      </div>
 
-      <label for="qualification">Educational Qualification *</label>
-      <input type="text" name="Qualification" id="qualification" required>
+      <label>8. Current Occupation / Study Status</label>
+      <input type="text" id="occupation">
 
-      <label for="college">College/School Name *</label>
-      <input type="text" name="College" id="college" required>
+      <label>9. Highest Qualification</label>
+      <div class="radio-group">
+        <label><input type="radio" name="qualification" value="High School"> High School</label>
+        <label><input type="radio" name="qualification" value="Bachelor’s Degree"> Bachelor’s Degree</label>
+        <label><input type="radio" name="qualification" value="Master’s Degree"> Master’s Degree</label>
+        <label><input type="radio" name="qualification" value="Other"> Other</label>
+      </div>
 
-      <label for="why">Why do you want to join this course? *</label>
-      <textarea name="Reason" id="why" rows="4" required></textarea>
+      <label>10. Have you studied French before?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="studied" value="Yes"> Yes</label>
+        <label><input type="radio" name="studied" value="No"> No</label>
+      </div>
 
-      <label for="heard">How did you hear about us?</label>
-      <select name="Reference Source" id="heard">
-        <option value="">-- Select --</option>
-        <option value="WhatsApp">WhatsApp</option>
-        <option value="Facebook">Facebook</option>
-        <option value="Instagram">Instagram</option>
-        <option value="Friend/Family">Friend/Family</option>
-        <option value="Other">Other</option>
-      </select>
+      <label>11. If yes, what level?</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" value="A1"> A1</label>
+        <label><input type="checkbox" value="A2"> A2</label>
+        <label><input type="checkbox" value="B1"> B1</label>
+        <label><input type="checkbox" value="B2"> B2</label>
+        <label><input type="checkbox" value="Not Sure"> Not Sure</label>
+        <label><input type="checkbox" value="Other"> Other</label>
+      </div>
 
-      <button type="submit">Submit</button>
+      <label>12. Why do you want to learn French?</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" value="Education"> Education</label>
+        <label><input type="checkbox" value="Job Opportunities"> Job Opportunities</label>
+        <label><input type="checkbox" value="Immigration"> Immigration (Canada/France)</label>
+        <label><input type="checkbox" value="Travel"> Travel</label>
+        <label><input type="checkbox" value="Hobby"> Hobby</label>
+        <label><input type="checkbox" value="Other"> Other</label>
+      </div>
+
+      <label>13. Preferred Class Days</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" value="Monday"> Monday</label>
+        <label><input type="checkbox" value="Tuesday"> Tuesday</label>
+        <label><input type="checkbox" value="Wednesday"> Wednesday</label>
+        <label><input type="checkbox" value="Thursday"> Thursday</label>
+        <label><input type="checkbox" value="Friday"> Friday</label>
+        <label><input type="checkbox" value="Saturday"> Saturday</label>
+        <label><input type="checkbox" value="Sunday"> Sunday</label>
+      </div>
+
+      <label>14. Preferred Time Slot</label>
+      <div class="radio-group">
+        <label><input type="radio" name="time" value="Morning"> Morning</label>
+        <label><input type="radio" name="time" value="Afternoon"> Afternoon</label>
+        <label><input type="radio" name="time" value="Evening"> Evening</label>
+        <label><input type="radio" name="time" value="Flexible"> Flexible</label>
+      </div>
+
+      <label>15. Preferred Teaching Language</label>
+      <div class="radio-group">
+        <label><input type="radio" name="language" value="English"> English</label>
+        <label><input type="radio" name="language" value="Hindi"> Hindi</label>
+        <label><input type="radio" name="language" value="Both"> Both</label>
+      </div>
+
+      <label>16. Do you have any prior certifications in French?</label>
+      <input type="text" id="certification">
+
+      <label>17. Any special learning needs or expectations?</label>
+      <textarea id="expectations" rows="3"></textarea>
+
+      <label>18. How did you hear about this class?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="ref" value="Instagram"> Instagram</label>
+        <label><input type="radio" name="ref" value="WhatsApp"> WhatsApp</label>
+        <label><input type="radio" name="ref" value="Friend"> Friend</label>
+        <label><input type="radio" name="ref" value="Google"> Google</label>
+        <label><input type="radio" name="ref" value="Other"> Other</label>
+      </div>
+
+      <button type="submit">Submit via WhatsApp</button>
     </form>
   </div>
+
+  <script>
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const dob = document.getElementById('dob').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const cityCountry = document.getElementById('cityCountry').value;
+      const occupation = document.getElementById('occupation').value;
+      const certification = document.getElementById('certification').value;
+      const expectations = document.getElementById('expectations').value;
+
+      const gender = document.querySelector('input[name="gender"]:checked')?.value || "";
+      const mode = document.querySelector('input[name="mode"]:checked')?.value || "";
+      const qualification = document.querySelector('input[name="qualification"]:checked')?.value || "";
+      const studied = document.querySelector('input[name="studied"]:checked')?.value || "";
+      const time = document.querySelector('input[name="time"]:checked')?.value || "";
+      const language = document.querySelector('input[name="language"]:checked')?.value || "";
+      const ref = document.querySelector('input[name="ref"]:checked')?.value || "";
+
+      const level = Array.from(document.querySelectorAll('.checkbox-group:nth-of-type(2) input:checked')).map(el => el.value).join(", ");
+      const reasons = Array.from(document.querySelectorAll('.checkbox-group:nth-of-type(3) input:checked')).map(el => el.value).join(", ");
+      const days = Array.from(document.querySelectorAll('.checkbox-group:nth-of-type(4) input:checked')).map(el => el.value).join(", ");
+
+      const message = 
+`French Class Registration:
+Name: ${name}
+DOB: ${dob}
+Gender: ${gender}
+Phone: ${phone}
+Email: ${email}
+City & Country: ${cityCountry}
+Class Mode: ${mode}
+Occupation: ${occupation}
+Qualification: ${qualification}
+Studied French Before: ${studied}
+Level (if yes): ${level}
+Reasons for Learning: ${reasons}
+Preferred Days: ${days}
+Time Slot: ${time}
+Teaching Language: ${language}
+Certifications: ${certification}
+Expectations: ${expectations}
+Heard via: ${ref}`;
+
+      const whatsappNumber = "91 8146540929"; // Replace with your number
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    });
+  </script>
 </body>
 </html>
+
